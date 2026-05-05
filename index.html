@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#8a6030" />
+    <meta name="description" content="無意識の才能を「稼げる言葉」に変換する強み言語化パートナー" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="強み言語化" />
+
+    <!-- OGP -->
+    <meta property="og:title" content="強み言語化パートナー" />
+    <meta property="og:description" content="無意識の才能を「稼げる言葉」に変換する" />
+    <meta property="og:type" content="website" />
+
+    <title>強み言語化パートナー｜200の問い #003</title>
+    <style>
+      html, body { background: #f0ede8; margin: 0; padding: 0; }
+      #root { background: #f0ede8; min-height: 100vh; }
+    </style>
+      <script>
+      // ?_export=1 でアクセスされた時、自身のlocalStorage履歴を親windowに送信
+      (function() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          if (params.get("_export") !== "1") return;
+          if (window.parent === window) return; // 親が無い場合は無視
+          var historyKey = null;
+          var data = null;
+          for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key && /^app\d{2,3}_history_v1$/.test(key)) {
+              historyKey = key;
+              try { data = JSON.parse(localStorage.getItem(key) || "[]"); } catch(e) {}
+              break;
+            }
+          }
+          var match = (historyKey || "").match(/^app(\d{2,3})/);
+          var appId = match ? match[1] : "";
+          window.parent.postMessage({
+            type: "TOI_EXPORT",
+            payload: { appId: appId, history: Array.isArray(data) ? data : [] }
+          }, "*");
+        } catch (e) {}
+      })();
+    </script>
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
